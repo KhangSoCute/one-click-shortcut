@@ -1,3 +1,5 @@
+FIRST OF ALL, RUN ONE-CLICK.BAT
+
 # Shortcut Creator
 
 A Python desktop app to create **fullscreen website shortcuts** for iOS & Android.
