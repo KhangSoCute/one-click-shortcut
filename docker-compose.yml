@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+    # This service automatically pulls the Android SDK and a working Virtual Phone (Android 11)
+    android-emulator:
+        image: budtmo/docker-android:emulator_11.0
+        container_name: android-emulator
+        privileged: true # Required for KVM hardware acceleration
+        devices:
+            - /dev/kvm:/dev/kvm # Passes your computer's virtual hardware to the container
+        ports:
+            - "6080:6080" # Web VNC port (Open http://localhost:6080 in your browser to see the phone!)
+            - "5554:5554" # Emulator Console Port
+            - "5555:5555" # ADB Port (for connecting Python scripts or your IDE)
+        environment:
+            - EMULATOR_DEVICE=Samsung Galaxy S10
+            - WEB_VNC=true
+        volumes:
+            - emulator-data:/home/androidusr
+
+volumes:
+    emulator-data:
